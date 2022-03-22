@@ -33,10 +33,3 @@ jobs:
         GAPI: ${{ secrets.GAPI}}
       run: |
         python ./2020TravelWeekSummary_GoogleSheetDataUpdates_New.py
-    - name: Git push
-      run: |
-        git config --global user.name "rrlinrr"
-        git config --global user.email "rlin@planning.nyc.gov"
-        git add .
-        git commit -m "update"
-        git push 
