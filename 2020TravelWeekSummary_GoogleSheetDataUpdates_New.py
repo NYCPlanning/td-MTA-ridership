@@ -9,15 +9,10 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
 gapi = os.environ.get('GAPI')
-print(gapi)
-
-gapiStr = json.dumps(gapi)
 
 SCOPES = ('https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive')
-service_account_info = json.loads(gapiStr)
-print("service_account_info")
-print(type(service_account_info))
-print(service_account_info)
+service_account_info = json.loads(gapi)
+
 my_credentials = service_account.Credentials.from_service_account_info(service_account_info, scopes=SCOPES)
 print("my_credentials")
 client = pygsheets.authorize(custom_credentials =my_credentials)
