@@ -11,8 +11,10 @@ pd.set_option('display.max_rows', None)
 
 gapi = os.environ.get('GAPI')
 print(gapi)
-
+print(type(gapi))
 gapiStr = json.dumps(gapi)
+print(gapiStr)
+print(type(gapiStr))
 
 SCOPES = ('https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive')
 service_account_info = json.loads(gapiStr)
