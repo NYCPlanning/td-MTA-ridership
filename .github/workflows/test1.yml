@@ -28,5 +28,7 @@ jobs:
         pip install numpy
         pip install google-auth
     - name: Run test.py
+      env: 
+        GAPI: ${{secrets.GAPI}} 
       run: |
         python ./test.py
