@@ -27,6 +27,7 @@ jobs:
         pip install pandas
         pip install pygsheets
         pip install numpy
+        pip install google.oauth2
     - name: Run 2020TravelWeekSummary_GoogleSheetDataUpdates_New.py
       run: |
         python ./2020TravelWeekSummary_GoogleSheetDataUpdates_New.py
