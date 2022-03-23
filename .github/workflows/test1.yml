@@ -27,6 +27,6 @@ jobs:
         pip install pygsheets
         pip install numpy
         pip install google-auth
-    - name: Run 2020TravelWeekSummary_GoogleSheetDataUpdates_New.py
+    - name: Run test.py
       run: |
-        python ./2020TravelWeekSummary_GoogleSheetDataUpdates_New.py
+        python ./test.py
