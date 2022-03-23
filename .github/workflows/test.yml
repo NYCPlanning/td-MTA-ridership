@@ -28,6 +28,6 @@ jobs:
         pip install os
         pip install pygsheets
         pip install numpy
-    - name: Run 2020TravelWeekSummary_GoogleSheetDataUpdates_New.py
+    - name: Run test.py
       run: |
-        python ./2020TravelWeekSummary_GoogleSheetDataUpdates_New.py
+        python ./test.py
