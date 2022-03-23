@@ -12,6 +12,11 @@ pd.set_option('display.max_rows', None)
 gapi = os.environ.get('GAPI')
 print(gapi)
 print(type(gapi))
+
+res = json.loads(gapi)
+print(res)
+print(type(res))
+
 gapiStr = json.dumps(gapi)
 print(gapiStr)
 print(type(gapiStr))
