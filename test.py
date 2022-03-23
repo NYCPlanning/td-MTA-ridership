@@ -13,16 +13,8 @@ gapi = os.environ.get('GAPI')
 print(gapi)
 print(type(gapi))
 
-res = json.loads(gapi)
-print(res)
-print(type(res))
-
-gapiStr = json.dumps(gapi)
-print(gapiStr)
-print(type(gapiStr))
-
 SCOPES = ('https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive')
-service_account_info = json.loads(gapiStr)
+service_account_info = json.loads(gapi)
 print("service_account_info")
 print(type(service_account_info))
 print(service_account_info)
