@@ -27,6 +27,6 @@ jobs:
         pip install pandas
         pip install pygsheets
         pip install numpy
-    - name: Run test.py
+    - name: Run 2020TravelWeekSummary_GoogleSheetDataUpdates_New.py
       run: |
-        python ./test.py
+        python ./2020TravelWeekSummary_GoogleSheetDataUpdates_New.py
