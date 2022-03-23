@@ -19,3 +19,10 @@ print("service_account_info")
 print(type(service_account_info))
 print(service_account_info)
 my_credentials = service_account.Credentials.from_service_account_info(service_account_info, scopes=SCOPES)
+print("my_credentials")
+client = pygsheets.authorize(custom_credentials =my_credentials)
+print("-----------------Authorized--------------------")
+
+
+sheet = client.open('2020TravelWeekSummary')
+print("-----------------Sheet Opened------------------")
