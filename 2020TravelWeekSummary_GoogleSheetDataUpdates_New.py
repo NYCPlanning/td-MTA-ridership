@@ -7,9 +7,15 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
 gapi = os.environ.get('GAPI')
-print(os.environ.get('GAPI'))
+print(gapi)
 
-client = pygsheets.authorize(service_account_env_var =gapi)
+gapiStr = json.dumps(gapi)
+
+SCOPES = ('https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive')
+service_account_info = json.loads(gapiStr)
+my_credentials = service_account.Credentials.from_service_account_info(service_account_info, scopes=SCOPES)
+
+client = pygsheets.authorize(custom_credentials =my_credentials)
 print("-----------------Authorized--------------------")
 
 
