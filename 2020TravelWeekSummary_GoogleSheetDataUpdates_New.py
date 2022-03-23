@@ -8,28 +8,24 @@ from google.oauth2 import service_account
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
+# read Google APIs through Github secrets
 gapi = os.environ.get('GAPI')
 
+# customize the authorization 
 SCOPES = ('https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive')
 service_account_info = json.loads(gapi)
-
 my_credentials = service_account.Credentials.from_service_account_info(service_account_info, scopes=SCOPES)
-print("my_credentials")
+
 client = pygsheets.authorize(custom_credentials =my_credentials)
 print("-----------------Authorized--------------------")
-
-
 sheet = client.open('2020TravelWeekSummary')
 print("-----------------Sheet Opened------------------")
-
-
 
 # define file path and read raw data
 path='/Users/rl/OneDrive - NYC O365 HOSTED/Desktop/subway ridership/Fare/'
 
 # tabledf = pd.read_csv(path+"MTA_recent_ridership_data_20210311.csv", header= 0, index_col=False)
 rawdf = pd.read_csv("https://new.mta.info/document/20441", header= 0, index_col=False)
-
 
 idx = rawdf["LIRR: Total Estimated Ridership"]=="TBD"
 rowidx = np.where(idx)[0]
@@ -112,10 +108,6 @@ if rowidx.tolist() != []:
     rawdf['Bridges and Tunnels: % of Comparable Pre-Pandemic Day'] = rawdf['Bridges and Tunnels: % of Comparable Pre-Pandemic Day'].str.rstrip('%').astype('float') / 100.0
     #rawdf.loc[rowidx[1], "Bridges and Tunnels: % of Comparable Pre-Pandemic Day"] = (rawdf.loc[rowidx[1] + 1, "Bridges and Tunnels: % of Comparable Pre-Pandemic Day"] +rawdf.loc[rowidx[1] + 2, "Bridges and Tunnels: % of Comparable Pre-Pandemic Day"]+rawdf.loc[rowidx[1] + 3, "Bridges and Tunnels: % of Comparable Pre-Pandemic Day"])/3
     rawdf.loc[rowidx[0], "Bridges and Tunnels: % of Comparable Pre-Pandemic Day"] = (rawdf.loc[rowidx[0] + 1, "Bridges and Tunnels: % of Comparable Pre-Pandemic Day"] +rawdf.loc[rowidx[0] + 2, "Bridges and Tunnels: % of Comparable Pre-Pandemic Day"]+rawdf.loc[rowidx[0] + 3, "Bridges and Tunnels: % of Comparable Pre-Pandemic Day"])/3
-
-
-
-
 
 tabledf = rawdf
 
