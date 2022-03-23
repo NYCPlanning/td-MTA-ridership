@@ -27,8 +27,8 @@ jobs:
         pip install pygsheets
         pip install numpy
         pip install google-auth
-    - name: Run test.py
+    - name: Run 2020TravelWeekSummary_GoogleSheetDataUpdates_New.py
       env: 
         GAPI: ${{secrets.GAPI}} 
       run: |
-        python ./test.py
+        python ./2020TravelWeekSummary_GoogleSheetDataUpdates_New.py
