@@ -92,10 +92,10 @@ weekdaydf = resultdf.groupby(['weekOrder', 'Weekday'], as_index=False).agg({'Dat
 
 weekdaydf = weekdaydf.loc[((weekdaydf["daySum"]==2) & (weekdaydf["Weekday"]=="Weekend")) | \
                           ((weekdaydf["daySum"]==5) & (weekdaydf["Weekday"]=="Weekday"))]
-print(weekdaydf)
+
 for i in range(0, len(ridershipCol)):
-    print(percentCol[i])
-    print(weekdaydf[percentCol[i]])
+    print(ridershipCol[i])
+    print(weekdaydf[ridershipCol[i]])
     weekdaydf[percentCol[i]] = weekdaydf[ridershipCol[i]].pct_change(periods=2)  
 
 weekdaydf = weekdaydf.replace([np.inf, -np.inf], np.nan)
