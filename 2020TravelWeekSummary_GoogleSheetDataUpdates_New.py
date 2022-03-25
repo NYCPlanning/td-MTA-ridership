@@ -51,7 +51,7 @@ tabledf["Period"] = np.where(tabledf["Dates"] < pd.to_datetime("01/01/2021", for
 wks = sheet[1]
 print("-----------------Second Sheet Accessed----------")
 
-wks.set_dataframe(rawdf,(1,1))
+wks.set_dataframe(tabledf,(1,1))
 print("-----------------Data Updated------------------")
 
 
