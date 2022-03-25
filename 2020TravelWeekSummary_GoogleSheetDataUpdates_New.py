@@ -67,6 +67,9 @@ ridershipCol = ['Subway Ridership','Bus Ridership','LIRR Ridership','Metro-North
     
 percentCol = ["Subway Percent Change", "Bus Percent Change", "LIRR Percent Change", "MNR Percent Change", \
               "Access-A-Ride Percent Change", "MTA Bridges and Tunnels Traffic Percent Change"]
+
+for i in range(0, len(ridershipCol)):
+    resultdf[ridershipCol[i]] = resultdf[ridershipCol[i]].astype(float) 
     
 #tabledf[ridershipCol] = tabledf[ridershipCol].fillna(0)
 #tabledf[ridershipCol] = tabledf[ridershipCol].astype(int)        
