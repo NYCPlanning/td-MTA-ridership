@@ -57,7 +57,7 @@ print("-----------------Data Updated------------------")
 
 
 # rawdf = rawdf.fillna(0)
-resultdf = rawdf[rawColList]
+resultdf = rawdf[rawColList].copy()
 resultdf = resultdf[['Date', 'Subways: Total Estimated Ridership','Buses: Total Estimated Ridership','LIRR: Total Estimated Ridership',\
        'Metro-North: Total Estimated Ridership','Access-A-Ride: Total Scheduled Trips','Bridges and Tunnels: Total Traffic']]
 
