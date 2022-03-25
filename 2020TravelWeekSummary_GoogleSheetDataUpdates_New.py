@@ -75,7 +75,7 @@ resultdf['DayofWeek'] = resultdf['Dates'].dt.dayofweek
 resultdf['Weekday'] = np.where(resultdf['DayofWeek'].isin([0,1,2,3,4]), "Weekday", "Weekend")
 
 #startDate = pd.to_datetime("03/09/2020", format='%m/%d/%Y')
-print("Weekday")
+
 resultdf["weekOrder"] = np.nan
 for i in range(0, resultdf.shape[0]):
     if resultdf.loc[i, "Dates"]<= pd.to_datetime("01/03/2021", format='%m/%d/%Y'):
@@ -92,8 +92,9 @@ weekdaydf = resultdf.groupby(['weekOrder', 'Weekday'], as_index=False).agg({'Dat
 
 weekdaydf = weekdaydf.loc[((weekdaydf["daySum"]==2) & (weekdaydf["Weekday"]=="Weekend")) | \
                           ((weekdaydf["daySum"]==5) & (weekdaydf["Weekday"]=="Weekday"))]
-
+print("Weekday")
 for i in range(0, len(ridershipCol)):
+    print(percentCol[i])
     weekdaydf[percentCol[i]] = weekdaydf[ridershipCol[i]].pct_change(periods=2)  
 
 weekdaydf = weekdaydf.replace([np.inf, -np.inf], np.nan)
