@@ -95,6 +95,7 @@ weekdaydf = weekdaydf.loc[((weekdaydf["daySum"]==2) & (weekdaydf["Weekday"]=="We
 print("Weekday")
 for i in range(0, len(ridershipCol)):
     print(percentCol[i])
+    print(weekdaydf[percentCol[i]])
     weekdaydf[percentCol[i]] = weekdaydf[ridershipCol[i]].pct_change(periods=2)  
 
 weekdaydf = weekdaydf.replace([np.inf, -np.inf], np.nan)
