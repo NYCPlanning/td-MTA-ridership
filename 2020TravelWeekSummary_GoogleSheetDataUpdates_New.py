@@ -93,6 +93,8 @@ weekdaydf = resultdf.groupby(['weekOrder', 'Weekday'], as_index=False).agg({'Dat
 weekdaydf = weekdaydf.loc[((weekdaydf["daySum"]==2) & (weekdaydf["Weekday"]=="Weekend")) | \
                           ((weekdaydf["daySum"]==5) & (weekdaydf["Weekday"]=="Weekday"))]
 
+print(weekdaydf.loc[1, "Subway Ridership"])
+print(type(weekdaydf.loc[1, "Subway Ridership"]))
 for i in range(0, len(ridershipCol)):
     print(ridershipCol[i])
     print(weekdaydf[ridershipCol[i]])
