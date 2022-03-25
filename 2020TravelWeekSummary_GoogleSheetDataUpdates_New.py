@@ -32,7 +32,7 @@ rawdf =  rawdf.iloc[::-1]
 rawColList = rawdf.columns.tolist()
 
 for i in range(1, 13):
-    rawdf[rawColList[i]] = rawdf[rawColList[i]].str.rstrip('%').astype('float') / 100.0
+    rawdf[rawColList[i]] = rawdf[rawColList[i]].astype(str).str.rstrip('%').astype('float') / 100.0
     rawdf[rawColList[i] + ' Avg.'] = rawdf[rawColList[i]].rolling(7, min_periods=1).mean()
     print(rawColList[i])
 
