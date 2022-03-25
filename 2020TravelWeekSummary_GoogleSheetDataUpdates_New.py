@@ -33,7 +33,7 @@ rawColList = rawdf.columns.tolist()
 
 for i in range(1, 13):
     rawdf[rawColList[i] + ' Avg.'] = rawdf[rawColList[i]].rolling(7, min_periods=1).mean()
-    print(rawColList[i]])
+    print(rawColList[i])
 
 tabledf1 = rawdf[rawColList]
 tabledf2 = rawdf[['Date'] + list(set(rawdf.columns.tolist()).difference(set(rawColList)))]
