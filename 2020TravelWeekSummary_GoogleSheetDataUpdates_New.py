@@ -34,7 +34,6 @@ rawColList = rawdf.columns.tolist()
 for i in range(1, 13):
     #rawdf[rawColList[i]] = rawdf[rawColList[i]].astype(str).str.rstrip('%').astype('float') / 100.0
     rawdf[rawColList[i] + ' Avg.'] = rawdf[rawColList[i]].rolling(7, min_periods=1).mean()
-    print(rawColList[i])
 
 tabledf1 = rawdf[rawColList]
 tabledf2 = rawdf[['Date'] + list(set(rawdf.columns.tolist()).difference(set(rawColList)))]
@@ -76,7 +75,7 @@ resultdf['DayofWeek'] = resultdf['Dates'].dt.dayofweek
 resultdf['Weekday'] = np.where(resultdf['DayofWeek'].isin([0,1,2,3,4]), "Weekday", "Weekend")
 
 #startDate = pd.to_datetime("03/09/2020", format='%m/%d/%Y')
-
+print("Weekday")
 resultdf["weekOrder"] = np.nan
 for i in range(0, resultdf.shape[0]):
     if resultdf.loc[i, "Dates"]<= pd.to_datetime("01/03/2021", format='%m/%d/%Y'):
