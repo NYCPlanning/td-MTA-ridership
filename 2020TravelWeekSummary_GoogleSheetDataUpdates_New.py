@@ -83,8 +83,10 @@ resultdf["weekOrder"] = np.nan
 for i in range(0, resultdf.shape[0]):
     if resultdf.loc[i, "Dates"]<= pd.to_datetime("01/03/2021", format='%m/%d/%Y'):
         resultdf.loc[i, "weekOrder"] = resultdf.loc[i, "Dates"].isocalendar()[1] - 9
-    else:
+    elif resultdf.loc[i, "Dates"]<= pd.to_datetime("01/02/2022", format='%m/%d/%Y'):
         resultdf.loc[i, "weekOrder"] = resultdf.loc[i, "Dates"].isocalendar()[1] + 44
+    else:
+        resultdf.loc[i, "weekOrder"] = resultdf.loc[i, "Dates"].isocalendar()[1] + 96
     
 resultdf["daySum"] = 1   
 weekdaydf = resultdf.groupby(['weekOrder', 'Weekday'], as_index=False).agg({'Date': 'last','Dates': 'last', 'daySum': 'sum', 'Subway Ridership': 'sum', \
