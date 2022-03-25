@@ -25,14 +25,14 @@ print("-----------------Sheet Opened------------------")
 path='/Users/rl/OneDrive - NYC O365 HOSTED/Desktop/subway ridership/Fare/'
 
 # tabledf = pd.read_csv(path+"MTA_recent_ridership_data_20210311.csv", header= 0, index_col=False)
-rawdf = pd.read_csv("https://new.mta.info/document/20441", header= 0, index_col=False)
+rawdf = pd.read_csv("https://data.ny.gov/api/views/vxuj-8kew/rows.csv?accessType=DOWNLOAD&sorting=true", header= 0, index_col=False)
 
 rawdf =  rawdf.iloc[::-1]
 
 rawColList = rawdf.columns.tolist()
 
 for i in range(1, 13):
-    rawdf[rawColList[i]] = rawdf[rawColList[i]].astype(str).str.rstrip('%').astype('float') / 100.0
+    #rawdf[rawColList[i]] = rawdf[rawColList[i]].astype(str).str.rstrip('%').astype('float') / 100.0
     rawdf[rawColList[i] + ' Avg.'] = rawdf[rawColList[i]].rolling(7, min_periods=1).mean()
     print(rawColList[i])
 
