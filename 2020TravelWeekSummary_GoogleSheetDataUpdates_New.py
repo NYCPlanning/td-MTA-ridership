@@ -21,9 +21,6 @@ print("-----------------Authorized--------------------")
 sheet = client.open('2020TravelWeekSummary')
 print("-----------------Sheet Opened------------------")
 
-# define file path and read raw data
-path='/Users/rl/OneDrive - NYC O365 HOSTED/Desktop/subway ridership/Fare/'
-
 # tabledf = pd.read_csv(path+"MTA_recent_ridership_data_20210311.csv", header= 0, index_col=False)
 rawdf = pd.read_csv("https://data.ny.gov/api/views/vxuj-8kew/rows.csv?accessType=DOWNLOAD&sorting=true", header= 0, index_col=False)
 
