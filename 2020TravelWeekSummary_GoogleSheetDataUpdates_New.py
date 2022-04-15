@@ -37,7 +37,7 @@ tabledf2 = rawdf[['Date'] + list(set(rawdf.columns.tolist()).difference(set(rawC
 tabledf2.columns = tabledf2.columns.str.replace(' Avg.', '')
         
         
-tabledf1["Calculation"] = "Original Values"
+tabledf1["Calculation"] = "Daily Ridership"
 tabledf2["Calculation"] = "7-Day Moving Averages"
 
 tabledf =  pd.concat([tabledf1, tabledf2])
