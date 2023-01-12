@@ -43,7 +43,9 @@ tabledf2["Calculation"] = "7-Day Moving Averages"
 tabledf =  pd.concat([tabledf1, tabledf2])
 
 tabledf['Dates'] = pd.to_datetime(tabledf['Date'], format='%m/%d/%Y')
-tabledf["Period"] = np.where(tabledf["Dates"] < pd.to_datetime("01/01/2021", format='%m/%d/%Y'),"2020", np.where(tabledf["Dates"] < pd.to_datetime("01/01/2022", format='%m/%d/%Y'),"2021","2022"))
+tabledf["Period"] = np.where(tabledf["Dates"] < pd.to_datetime("01/01/2021", format='%m/%d/%Y'),"2020", \
+                             np.where(tabledf["Dates"] < pd.to_datetime("01/01/2022", format='%m/%d/%Y'),"2021", \
+                             np.where(tabledf["Dates"] < pd.to_datetime("01/01/2023", format='%m/%d/%Y'),"2022","2023")))
 
 wks = sheet[1]
 print("-----------------Second Sheet Accessed----------")
@@ -82,8 +84,10 @@ for i in range(0, resultdf.shape[0]):
         resultdf.loc[i, "weekOrder"] = resultdf.loc[i, "Dates"].isocalendar()[1] - 9
     elif resultdf.loc[i, "Dates"]<= pd.to_datetime("01/02/2022", format='%m/%d/%Y'):
         resultdf.loc[i, "weekOrder"] = resultdf.loc[i, "Dates"].isocalendar()[1] + 44
-    else:
+    elif resultdf.loc[i, "Dates"]<= pd.to_datetime("01/01/2023", format='%m/%d/%Y'):
         resultdf.loc[i, "weekOrder"] = resultdf.loc[i, "Dates"].isocalendar()[1] + 96
+    else:
+        resultdf.loc[i, "weekOrder"] = resultdf.loc[i, "Dates"].isocalendar()[1] + 148
     
 resultdf["daySum"] = 1   
 weekdaydf = resultdf.groupby(['weekOrder', 'Weekday'], as_index=False).agg({'Date': 'last','Dates': 'last', 'daySum': 'sum', 'Subway Ridership': 'sum', \
@@ -106,8 +110,10 @@ weekdaydf = weekdaydf.replace([np.inf, -np.inf], np.nan)
 
 weekdaydf["Week"] = [("Week of "  + x) for x in weekdaydf["Date"]]
 
-weekdaydf["Period"] = np.where(weekdaydf["Dates"] < pd.to_datetime("01/01/2021", format='%m/%d/%Y'),"2020", np.where(weekdaydf["Dates"] < pd.to_datetime("01/01/2022", format='%m/%d/%Y'), "2021", "2022"))
-    
+weekdaydf["Period"] = np.where(weekdaydf["Dates"] < pd.to_datetime("01/01/2021", format='%m/%d/%Y'),"2020", \
+                               np.where(weekdaydf["Dates"] < pd.to_datetime("01/01/2022", format='%m/%d/%Y'), "2021", \
+                               np.where(weekdaydf["Dates"] < pd.to_datetime("01/01/2023", format='%m/%d/%Y'),"2022","2023")))
+
 weekdaydf.drop('Dates', axis=1, inplace=True)
 
 wks = sheet[0]
