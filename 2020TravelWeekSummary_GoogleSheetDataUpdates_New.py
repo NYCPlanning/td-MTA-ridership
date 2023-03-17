@@ -35,6 +35,10 @@ for i in range(1, 15):
     rawdf.loc[rawdf["Date"]=="03/01/2020", rawColList[i]] = np.nan
     rawdf.loc[rawdf["Date"]=="03/02/2020", rawColList[i] + ' Avg.'] = np.nan
     rawdf.loc[rawdf["Date"]=="03/02/2020", rawColList[i]] = np.nan
+    rawdf.loc[rawdf["Date"]=="03/03/2020", rawColList[i] + ' Avg.'] = np.nan
+    rawdf.loc[rawdf["Date"]=="03/03/2020", rawColList[i]] = np.nan
+    rawdf.loc[rawdf["Date"]=="03/04/2020", rawColList[i] + ' Avg.'] = np.nan
+    rawdf.loc[rawdf["Date"]=="03/04/2020", rawColList[i]] = np.nan
     rawdf.loc[0, rawColList[i] + ' Avg.'] = np.nan
     rawdf.loc[0, rawColList[i]] = np.nan
 
