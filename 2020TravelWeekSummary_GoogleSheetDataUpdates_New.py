@@ -31,9 +31,10 @@ rawColList = rawdf.columns.tolist()
 for i in range(1, 13):
     #rawdf[rawColList[i]] = rawdf[rawColList[i]].astype(str).str.rstrip('%').astype('float') / 100.0
     rawdf[rawColList[i] + ' Avg.'] = rawdf[rawColList[i]].rolling(7, min_periods=1).mean()
+    rawdf.loc[rawdf["Date"]=="03/01/2020", rawColList[i] + ' Avg.'] = np.nan
+    rawdf.loc[rawdf["Date"]=="03/01/2020", rawColList[i]] = np.nan
     rawdf.loc[0, rawColList[i] + ' Avg.'] = np.nan
-    print(rawdf.loc[0, rawColList[i] + ' Avg.'])
-    print(rawdf.iloc[0])
+    rawdf.loc[0, rawColList[i]] = np.nan
 
 tabledf1 = rawdf[rawColList]
 tabledf2 = rawdf[['Date'] + list(set(rawdf.columns.tolist()).difference(set(rawColList)))]
@@ -42,8 +43,6 @@ tabledf2.columns = tabledf2.columns.str.replace(' Avg.', '')
         
 tabledf1["Calculation"] = "Daily Ridership"
 tabledf2["Calculation"] = "7-Day Moving Averages"
-#tabledf1 = tabledf1[1:]
-#tabledf2 = tabledf2[1:]
 
 tabledf =  pd.concat([tabledf1, tabledf2])
 
