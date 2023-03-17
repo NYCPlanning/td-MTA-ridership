@@ -28,7 +28,7 @@ rawdf =  rawdf.iloc[::-1]
 
 rawColList = rawdf.columns.tolist()
 
-for i in range(1, 13):
+for i in range(1, 15):
     #rawdf[rawColList[i]] = rawdf[rawColList[i]].astype(str).str.rstrip('%').astype('float') / 100.0
     rawdf[rawColList[i] + ' Avg.'] = rawdf[rawColList[i]].rolling(7, min_periods=1).mean()
     rawdf.loc[rawdf["Date"]=="03/01/2020", rawColList[i] + ' Avg.'] = np.nan
