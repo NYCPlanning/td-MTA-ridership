@@ -39,6 +39,8 @@ tabledf2.columns = tabledf2.columns.str.replace(' Avg.', '')
         
 tabledf1["Calculation"] = "Daily Ridership"
 tabledf2["Calculation"] = "7-Day Moving Averages"
+tabledf1 = tabledf1[1:]
+tabledf2 = tabledf2[1:]
 
 tabledf =  pd.concat([tabledf1, tabledf2])
 
