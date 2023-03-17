@@ -32,6 +32,8 @@ for i in range(1, 13):
     #rawdf[rawColList[i]] = rawdf[rawColList[i]].astype(str).str.rstrip('%').astype('float') / 100.0
     rawdf[rawColList[i] + ' Avg.'] = rawdf[rawColList[i]].rolling(7, min_periods=1).mean()
     rawdf.loc[0, rawColList[i] + ' Avg.'] = np.nan
+    print(rawdf.loc[0, rawColList[i] + ' Avg.'])
+    print(rawdf.iloc[0])
 
 tabledf1 = rawdf[rawColList]
 tabledf2 = rawdf[['Date'] + list(set(rawdf.columns.tolist()).difference(set(rawColList)))]
