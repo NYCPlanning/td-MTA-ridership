@@ -24,7 +24,7 @@ print("-----------------Sheet Opened------------------")
 # tabledf = pd.read_csv(path+"MTA_recent_ridership_data_20210311.csv", header= 0, index_col=False)
 rawdf = pd.read_csv("https://data.ny.gov/api/views/vxuj-8kew/rows.csv?accessType=DOWNLOAD&sorting=true", header= 0, index_col=False)
 rawdf =  rawdf.iloc[::-1]
-rawdf = rawdf.drop_duplicates(subset='Date', keep="first")
+#rawdf = rawdf.drop_duplicates(subset='Date', keep="first")
 
 rawColList = rawdf.columns.tolist()
 
