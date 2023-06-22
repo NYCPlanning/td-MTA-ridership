@@ -25,7 +25,7 @@ print("-----------------Sheet Opened------------------")
 rawdf = pd.read_csv("https://data.ny.gov/api/views/vxuj-8kew/rows.csv?accessType=DOWNLOAD&sorting=true", header= 0, index_col=False)
 
 rawdf = rawdf.drop_duplicates(subset='Date', keep="first")
-rawdf.reset_index(drop=True)
+rawdf = rawdf.reset_index(drop=True)
 rawdf =  rawdf.iloc[::-1]
 
 rawColList = rawdf.columns.tolist()
